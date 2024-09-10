@@ -1,0 +1,20 @@
+<h2>Lotto Results</h2>
+
+@if (results) {
+  <div>
+    @for (result of results; track result.index) {
+      <div>
+        <h3>{{ result.gameName }}</h3>
+        <p>Date: {{ result.drawDate }}</p>
+        <p>Numbers: {{ result.numbers.join(', ') }}</p>
+        <hr>
+      </div>
+    }
+  </div>
+} @else {
+  <p>Loading results...</p>
+}
+
+@if (errorMessage) {
+  <p>{{ errorMessage }}</p>
+}
