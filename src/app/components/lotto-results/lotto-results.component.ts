@@ -14,24 +14,20 @@ export class LottoResultsComponent implements OnInit {
 	constructor(private lottoApi: LottoApi) {}
 
 	ngOnInit(): void {
-		this.lottoApi.getAllLottoResults().subscribe(
-			(data) => {
-				this.results = data;
-			},
-			(error) => {
-				this.errorMessage = 'An error occurred while fetching Lotto results';
-			},
-		);
+		this.lottoApi.getLottoResultsByGame().subscribe((data) => {
+			this.results = data;
+			console.log(data);
+		});
 	}
 
 	fetchGameResults(gameId: string): void {
-		this.lottoApi.getLottoResultsByGame(gameId).subscribe(
-			(data) => {
-				this.results = data;
-			},
-			(error) => {
-				this.errorMessage = 'Error fetching results for ' + gameId;
-			},
-		);
+		// this.lottoApi.getLottoResultsByGame(gameId).subscribe(
+		// 	(data) => {
+		// 		this.results = data;
+		// 	},
+		// 	(error) => {
+		// 		this.errorMessage = 'Error fetching results for ' + gameId;
+		// 	},
+		// );
 	}
 }
